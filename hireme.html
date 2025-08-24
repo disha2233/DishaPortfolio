@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hire Me</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background:#111;
+      color:#fff;
+      text-align:center;
+      padding:50px;
+    }
+    h1 { color:#ff3366; margin-bottom:20px; }
+    form {
+      max-width:400px;
+      margin:auto;
+      background:#1c1c1c;
+      padding:20px;
+      border-radius:12px;
+    }
+    input, textarea {
+      width:100%;
+      margin:10px 0;
+      padding:10px;
+      border:none;
+      border-radius:8px;
+    }
+    button {
+      background:#ff3366;
+      color:#fff;
+      border:none;
+      padding:10px 20px;
+      border-radius:8px;
+      cursor:pointer;
+    }
+    button:hover { background:#ff5577; }
+  </style>
+</head>
+<body>
+  <h1>Hire Me</h1>
+  <p>Fill out the form below to get in touch with me.</p>
+  
+  <form id="hireForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="email" id="email" placeholder="Your Email" required>
+    <textarea id="message" rows="5" placeholder="Your Message"></textarea>
+    <button type="submit">Send Message</button>
+  </form>
+
+  <!-- ✅ Load EmailJS SDK -->
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    // Initialize EmailJS with your Public Key
+    (function(){
+      emailjs.init("g-_NwfzV_Ygq_tZ_o"); // Replace with your EmailJS public key
+    })();
+
+    // Handle form submit
+    document.getElementById("hireForm").addEventListener("submit", function(e){
+      e.preventDefault();
+
+      // Collect data
+      let templateParams = {
+        to_name: "Disha", 
+        from_name: document.getElementById("name").value,
+        from_email: document.getElementById("email").value,
+        message: document.getElementById("message").value
+      };
+
+      // Send email
+      emailjs.send("service_m3olqjs", "template_ubve5mj", templateParams)
+      .then(function(response) {
+          alert("✅ Thank you! Your message has been sent.");
+          document.getElementById("hireForm").reset();
+      }, function(error) {
+          alert("❌ Oops! Something went wrong. Please try again.");
+          console.error("EmailJS Error:", error);
+      });
+    });
+  </script>
+</body>
+</html>
