@@ -264,57 +264,144 @@ body {
   list-style-type: none;
   padding: 0;
 }
-/* 📱 Responsive Design Fix */
-@media (max-width: 768px) {
-  header {
-    flex-direction: column;
-    text-align: center;
-    padding: 15px 20px;
-  }
-
-  nav ul {
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
-  .btn {
-    width: auto;
-    height: auto;
-    font-size: 16px;
-    padding: 8px 15px;
-  }
-
-  .hero {
-    flex-direction: column;
-    text-align: center;
-    padding: 20px;
-  }
-
-  .hero-text {
-    max-width: 100%;
-  }
-
-  .hero-text h2 {
-    font-size: 24px;
-  }
-
-  .intro {
-    font-size: 16px;
-  }
-
-  .hero-img {
-    margin-top: 20px;
-  }
-
-  section {
-    padding: 30px 15px;
-  }
-}
-
 
 .skills-category li {
   margin-bottom: 8px;
 }
+.certifications {
+  max-width: 1100px;
+  margin: 50px auto;
+  padding: 20px;
+  color: #fff;
+}
 
+.certifications h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  color: #ff3366;
+}
 
+/* Grid for certificates */
+.cert-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+/* Card */
+.cert-card {
+  background: #1c1c1c;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 10px rgba(255, 51, 102, 0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cert-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(255, 51, 102, 0.6);
+}
+
+.cert-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #ff3366;
+  margin-bottom: 8px;
+}
+
+.cert-issuer {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-bottom: 10px;
+}
+
+.cert-desc {
+  font-size: 0.95rem;
+  color: #ddd;
+  margin-bottom: 15px;
+  line-height: 1.5;
+}
+
+/* 🔘 Button (auto-adjusts to text) */
+.cert-card .btn {
+  display: inline-block;
+  padding: 0.6em 1.2em;   /* scales with text */
+  background: #ff3366;
+  color: white;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: clamp(14px, 2vw, 18px); /* responsive text */
+  font-weight: 500;
+  text-align: center;
+  white-space: nowrap;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cert-card .btn:hover {
+  background: #ff5577;
+  transform: scale(1.05);
+}
+
+/* 📱 Mobile Responsive Design */
+@media (max-width: 768px) {
+  .certifications {
+    padding: 15px;
+    margin: 30px auto;
+  }
+
+  .certifications h2 {
+    font-size: 1.6rem;
+  }
+
+  .cert-grid {
+    grid-template-columns: 1fr; /* one card per row */
+    gap: 15px;
+  }
+
+  .cert-card {
+    padding: 15px;
+  }
+
+  .cert-title {
+    font-size: 1rem;
+  }
+
+  .cert-issuer {
+    font-size: 0.85rem;
+  }
+
+  .cert-desc {
+    font-size: 0.9rem;
+  }
+
+  .cert-card .btn {
+    font-size: clamp(13px, 3vw, 16px);
+    padding: 0.5em 1em;
+  }
+}
+
+@media (max-width: 480px) {
+  .certifications h2 {
+    font-size: 1.4rem;
+  }
+
+  .cert-card {
+    padding: 12px;
+    border-radius: 10px;
+  }
+
+  .cert-title {
+    font-size: 0.95rem;
+  }
+
+  .cert-desc {
+    font-size: 0.85rem;
+    line-height: 1.4;
+  }
+
+  .cert-card .btn {
+    font-size: clamp(12px, 4vw, 15px);
+    padding: 0.5em 0.9em;
+  }
+}
